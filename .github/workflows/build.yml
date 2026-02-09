@@ -6,11 +6,7 @@ on:
   push:
 
 jobs:
-  run-examples:
-    strategy:
-      fail-fast: false
-      matrix:
-        minor: [22, 24]
+  wayland-1-24:
     runs-on: ubuntu-latest
     container:
       image: fedora:43
@@ -28,11 +24,14 @@ jobs:
       - name: Set up Conan
         uses: conan-io/setup-conan@v1
 
+      - name: Build Wayland 1.24.0
+        run: conan create wayland/ --version=1.24.0 -o "*/*:shared=True" -b missing
+
       - name: Select Wayland minor version
         run: sed -i -E 's/22/${{matrix.minor}}/' conanfile.txt
 
       - name: Conan install dependencies
-        run: conan install . --build=missing
+        run: conan install . --build=missing -c tools.system.package_manager:mode=install
       
       - name: CMake setup
         run: cmake --preset conan-release -DCMAKE_VERBOSE_MAKEFILE=ON
