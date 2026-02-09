@@ -22,6 +22,11 @@ jobs:
       - name: Install System build tools
         run: dnf install -y gcc cmake
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
       - name: Set up Conan
         uses: conan-io/setup-conan@v1
 
