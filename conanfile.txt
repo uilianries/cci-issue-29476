@@ -2,6 +2,9 @@
 wayland/1.22.0
 egl/system
 
+[options]
+*/*:shared=True
+
 [generators]
 CMakeToolchain
 CMakeDeps
