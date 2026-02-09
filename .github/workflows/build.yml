@@ -25,7 +25,7 @@ jobs:
         uses: conan-io/setup-conan@v1
 
       - name: Build Wayland 1.24.0
-        run: conan create wayland/all --version=1.24.0 -o "*/*:shared=True" -b missing
+        run: conan create wayland/all --version=1.24.0 -o "*/*:shared=True" -b missing -c tools.system.package_manager:mode=install
 
       - name: Select Wayland minor version
         run: sed -i -E 's/22/${{matrix.minor}}/' conanfile.txt
