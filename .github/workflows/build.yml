@@ -25,7 +25,7 @@ jobs:
         uses: conan-io/setup-conan@v1
 
       - name: Build Wayland 1.24.0
-        run: conan create wayland/ --version=1.24.0 -o "*/*:shared=True" -b missing
+        run: conan create wayland/all --version=1.24.0 -o "*/*:shared=True" -b missing
 
       - name: Select Wayland minor version
         run: sed -i -E 's/22/${{matrix.minor}}/' conanfile.txt
@@ -42,4 +42,32 @@ jobs:
       - name: Run example
         run: source build/Release/generators/conanrun.sh && build/Release/wayland_egl_example
 
+  wayland-1-22:
+    runs-on: ubuntu-latest
+    container:
+      image: fedora:43
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install System build tools
+        run: dnf install -y gcc cmake
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Conan
+        uses: conan-io/setup-conan@v1
+
+      - name: Conan install dependencies
+        run: conan install . --build=missing -c tools.system.package_manager:mode=install
       
+      - name: CMake setup
+        run: cmake --preset conan-release -DCMAKE_VERBOSE_MAKEFILE=ON
+      
+      - name: CMake build
+        run: cmake --build --preset conan-release
+      
+      - name: Run example
+        run: source build/Release/generators/conanrun.sh && build/Release/wayland_egl_example
