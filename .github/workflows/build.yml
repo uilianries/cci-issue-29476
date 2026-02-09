@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [22, 24]
+        minor: [22, 24]
     runs-on: ubuntu-latest
     container:
       image: fedora:43
@@ -24,6 +24,9 @@ jobs:
 
       - name: Set up Conan
         uses: conan-io/setup-conan@v1
+
+      - name: Select Wayland minor version
+        run: sed -i -E 's/22/${{matrix.minor}}/' coanfile.txt
 
       - name: Conan install dependencies
         run: conan install . --build=missing
