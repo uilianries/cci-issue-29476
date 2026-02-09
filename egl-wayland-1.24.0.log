@@ -1,0 +1,217 @@
++ conan install .
+
+======== Input profiles ========
+Profile host:
+[settings]
+arch=x86_64
+build_type=Release
+compiler=gcc
+compiler.cppstd=gnu17
+compiler.libcxx=libstdc++11
+compiler.version=15
+os=Linux
+
+Profile build:
+[settings]
+arch=x86_64
+build_type=Release
+compiler=gcc
+compiler.cppstd=gnu17
+compiler.libcxx=libstdc++11
+compiler.version=15
+os=Linux
+
+
+======== Computing dependency graph ========
+Graph root
+    conanfile.txt: /home/defumak/Development/conan/egl-issue/conanfile.txt
+Requirements
+    egl/system#068ac3037d8cf01f768d0e001e6dcd76 - Cache
+    expat/2.7.4#55569edc34682009fd6f2e6a558ffed9 - Cache
+    libffi/3.4.8#a045c00fb26779635e3bed40e80c5254 - Cache
+    libiconv/1.17#1e65319e945f2d31941a9d28cc13c058 - Cache
+    libxml2/2.15.0#8d852c332225c0aa07a723fba8bcd0f5 - Cache
+    wayland/1.24.0#8d87f4d1e7b1e4a57d7a7c1ab4bd7987 - Cache
+    zlib/1.3.1#cac0f6daea041b0ccf42934163defb20 - Cache
+Build requirements
+    cmake/4.2.3#c5c10d4c90874997553970589940ab9c - Cache
+    meson/1.10.0#60786758ea978964c24525de19603cf4 - Cache
+    ninja/1.13.2#c8c5dc2a52ed6e4e42a66d75b4717ceb - Cache
+    pkgconf/2.5.1#93c2051284cba1279494a43a4fcfeae2 - Cache
+Resolved version ranges
+    cmake/[>=3.17]: cmake/4.2.3
+    cmake/[>=3.18]: cmake/4.2.3
+    expat/[>=2.6.2 <3]: expat/2.7.4
+    libffi/[>=3.4.4 <4]: libffi/3.4.8
+    libxml2/[>=2.12.5 <3]: libxml2/2.15.0
+    meson/[>=1.2.2 <2]: meson/1.10.0
+    meson/[>=1.4.0 <2]: meson/1.10.0
+    ninja/[>=1.10.2 <2]: ninja/1.13.2
+    pkgconf/[>=2.2 <3]: pkgconf/2.5.1
+    zlib/[>=1.3.1 <2]: zlib/1.3.1
+
+======== Computing necessary packages ========
+Requirements
+    egl/system#068ac3037d8cf01f768d0e001e6dcd76:da39a3ee5e6b4b0d3255bfef95601890afd80709#0ba8627bd47edc3a501e8f0eb9a79e5e - Cache
+    expat/2.7.4#55569edc34682009fd6f2e6a558ffed9:e2055acc98bb1d26a8bd2066e14b3433dcc8140d#5ad08e7c9612bb333c6e69aaa2a85acd - Cache
+    libffi/3.4.8#a045c00fb26779635e3bed40e80c5254:0d13984b201e806b8cdc9fe8ba217d50072d9154#7f3f095bb88229824b5e5ad864830149 - Cache
+    libiconv/1.17#1e65319e945f2d31941a9d28cc13c058:0d13984b201e806b8cdc9fe8ba217d50072d9154#d7b69f661c3f8057885f951d23e5e41f - Cache
+    libxml2/2.15.0#8d852c332225c0aa07a723fba8bcd0f5:274c1217b5ef86bec8f3b694e937bf2ec5e54623#0888435a161a1976593ab40984bfa35e - Cache
+    wayland/1.24.0#8d87f4d1e7b1e4a57d7a7c1ab4bd7987:9146cd168969cbaceb35f2b3b3c8b94ebdb41b9d#9c7e066f99d8426e553f7c0b91db29df - Cache
+    zlib/1.3.1#cac0f6daea041b0ccf42934163defb20:0d13984b201e806b8cdc9fe8ba217d50072d9154#1bd96129baeb1c9d3fb0453977c1fc6f - Cache
+Build requirements
+Skipped binaries
+    cmake/4.2.3, meson/1.10.0, ninja/1.13.2, pkgconf/2.5.1
+egl/system: System requirements: mesa-libEGL-devel already installed
+
+======== Installing packages ========
+egl/system: Already installed! (1 of 7)
+libffi/3.4.8: Already installed! (2 of 7)
+libiconv/1.17: Already installed! (3 of 7)
+zlib/1.3.1: Already installed! (4 of 7)
+expat/2.7.4: Already installed! (5 of 7)
+libxml2/2.15.0: Already installed! (6 of 7)
+wayland/1.24.0: Already installed! (7 of 7)
+
+======== Finalizing install (deploy, generators) ========
+conanfile.txt: Writing generators to /home/defumak/Development/conan/egl-issue/build/Release/generators
+conanfile.txt: Generator 'CMakeToolchain' calling 'generate()'
+conanfile.txt: CMakeToolchain generated: conan_toolchain.cmake
+conanfile.txt: CMakeToolchain: Preset 'conan-release' added to CMakePresets.json.
+    (cmake>=3.23) cmake --preset conan-release
+    (cmake<3.23) cmake <path> -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=generators/conan_toolchain.cmake  -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_BUILD_TYPE=Release
+conanfile.txt: CMakeToolchain generated: /home/defumak/Development/conan/egl-issue/build/Release/generators/CMakePresets.json
+conanfile.txt: CMakeToolchain generated: /home/defumak/Development/conan/egl-issue/CMakeUserPresets.json
+conanfile.txt: Generator 'CMakeDeps' calling 'generate()'
+conanfile.txt: CMakeDeps necessary find_package() and targets for your CMakeLists.txt
+    find_package(wayland)
+    find_package(egl)
+    target_link_libraries(... wayland::wayland egl::egl)
+conanfile.txt: Generating aggregated env files
+conanfile.txt: Generated aggregated env files: ['conanbuild.sh', 'conanrun.sh']
+Install finished successfully
++ cmake --fresh --preset conan-release -DCMAKE_VERBOSE_MAKEFILE=ON
+Preset CMake variables:
+
+  CMAKE_BUILD_TYPE="Release"
+  CMAKE_POLICY_DEFAULT_CMP0091="NEW"
+  CMAKE_TOOLCHAIN_FILE:FILEPATH="generators/conan_toolchain.cmake"
+
+-- Using Conan toolchain: /home/defumak/Development/conan/egl-issue/build/Release/generators/conan_toolchain.cmake
+-- Conan toolchain: Defining architecture flag: -m64
+-- Conan toolchain: C++ Standard 17 with extensions ON
+-- The C compiler identification is GNU 15.2.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/lib64/ccache/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Conan: Component target declared 'wayland::wayland-scanner'
+-- Conan: Component target declared 'wayland::wayland-server'
+-- Conan: Component target declared 'wayland::wayland-client'
+-- Conan: Component target declared 'wayland::wayland-egl-backend'
+-- Conan: Component target declared 'wayland::wayland-cursor'
+-- Conan: Component target declared 'wayland::wayland-egl'
+-- Conan: Target declared 'wayland::wayland'
+-- Conan: Target declared 'libffi::libffi'
+-- Conan: Target declared 'LibXml2::LibXml2'
+-- Conan: Target declared 'Iconv::Iconv'
+-- Conan: Target declared 'ZLIB::ZLIB'
+-- Conan: Target declared 'expat::expat'
+-- Conan: Target declared 'egl::egl'
+-- Configuring done (0.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/defumak/Development/conan/egl-issue/build/Release
++ cmake --build --preset conan-release
+Change Dir: '/home/defumak/Development/conan/egl-issue/build/Release'
+
+Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile -j4
+/usr/bin/cmake -S/home/defumak/Development/conan/egl-issue -B/home/defumak/Development/conan/egl-issue/build/Release --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /home/defumak/Development/conan/egl-issue/build/Release/CMakeFiles /home/defumak/Development/conan/egl-issue/build/Release//CMakeFiles/progress.marks
+/usr/bin/gmake  -f CMakeFiles/Makefile2 all
+gmake[1]: Entering directory '/home/defumak/Development/conan/egl-issue/build/Release'
+/usr/bin/gmake  -f CMakeFiles/wayland_egl_example.dir/build.make CMakeFiles/wayland_egl_example.dir/depend
+gmake[2]: Entering directory '/home/defumak/Development/conan/egl-issue/build/Release'
+cd /home/defumak/Development/conan/egl-issue/build/Release && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/defumak/Development/conan/egl-issue /home/defumak/Development/conan/egl-issue /home/defumak/Development/conan/egl-issue/build/Release /home/defumak/Development/conan/egl-issue/build/Release /home/defumak/Development/conan/egl-issue/build/Release/CMakeFiles/wayland_egl_example.dir/DependInfo.cmake "--color="
+gmake[2]: Leaving directory '/home/defumak/Development/conan/egl-issue/build/Release'
+/usr/bin/gmake  -f CMakeFiles/wayland_egl_example.dir/build.make CMakeFiles/wayland_egl_example.dir/build
+gmake[2]: Entering directory '/home/defumak/Development/conan/egl-issue/build/Release'
+[ 50%] Building C object CMakeFiles/wayland_egl_example.dir/main.c.o
+/usr/lib64/ccache/cc  -isystem /home/defumak/.conan2/p/b/wayla0d841f6f4e268/p/include -m64 -O3 -DNDEBUG -MD -MT CMakeFiles/wayland_egl_example.dir/main.c.o -MF CMakeFiles/wayland_egl_example.dir/main.c.o.d -o CMakeFiles/wayland_egl_example.dir/main.c.o -c /home/defumak/Development/conan/egl-issue/main.c
+[100%] Linking C executable wayland_egl_example
+/usr/bin/cmake -E cmake_link_script CMakeFiles/wayland_egl_example.dir/link.txt --verbose=1
+/usr/lib64/ccache/cc -m64 -O3 -DNDEBUG -m64 -Wl,--dependency-file=CMakeFiles/wayland_egl_example.dir/link.d CMakeFiles/wayland_egl_example.dir/main.c.o -o wayland_egl_example   -L/home/defumak/.conan2/p/b/wayla0d841f6f4e268/p/lib  -L/home/defumak/.conan2/p/b/libffd6b41f89fec49/p/lib  -Wl,-rpath,/home/defumak/.conan2/p/b/wayla0d841f6f4e268/p/lib:/home/defumak/.conan2/p/b/libffd6b41f89fec49/p/lib /home/defumak/.conan2/p/b/wayla0d841f6f4e268/p/lib/libwayland-egl.so /home/defumak/.conan2/p/b/wayla0d841f6f4e268/p/lib/libwayland-client.so -lpthread -lm -lrt -lEGL
+gmake[2]: Leaving directory '/home/defumak/Development/conan/egl-issue/build/Release'
+[100%] Built target wayland_egl_example
+gmake[1]: Leaving directory '/home/defumak/Development/conan/egl-issue/build/Release'
+/usr/bin/cmake -E cmake_progress_start /home/defumak/Development/conan/egl-issue/build/Release/CMakeFiles 0
+
++ set +x
++ WAYLAND_DEBUG=1
++ build/Release/wayland_egl_example
+[ 963400.523] {mesa egl display queue}  -> wl_display#1.get_registry(new id wl_registry#2)
+[ 963400.557] {mesa egl display queue}  -> wl_display#1.sync(new id wl_callback#3)
+[ 963400.776] {Display Queue} wl_display#1.delete_id(3)
+[ 963400.795] {mesa egl display queue} wl_registry#2.global(1, "wl_compositor", 6)
+[ 963400.803] {mesa egl display queue} wl_registry#2.global(2, "wl_shm", 2)
+[ 963400.809] {mesa egl display queue} wl_registry#2.global(3, "wl_output", 4)
+[ 963400.814] {mesa egl display queue} wl_registry#2.global(4, "zxdg_output_manager_v1", 3)
+[ 963400.819] {mesa egl display queue} wl_registry#2.global(5, "wl_data_device_manager", 3)
+[ 963400.823] {mesa egl display queue} wl_registry#2.global(6, "xdg_toplevel_drag_manager_v1", 1)
+[ 963400.828] {mesa egl display queue} wl_registry#2.global(7, "zwp_primary_selection_device_manager_v1", 1)
+[ 963400.833] {mesa egl display queue} wl_registry#2.global(8, "wl_subcompositor", 1)
+[ 963400.838] {mesa egl display queue} wl_registry#2.global(9, "xdg_wm_base", 7)
+[ 963400.843] {mesa egl display queue} wl_registry#2.global(10, "gtk_shell1", 6)
+[ 963400.848] {mesa egl display queue} wl_registry#2.global(11, "wp_viewporter", 1)
+[ 963400.853] {mesa egl display queue} wl_registry#2.global(12, "wp_fractional_scale_manager_v1", 1)
+[ 963400.858] {mesa egl display queue} wl_registry#2.global(13, "zwp_pointer_gestures_v1", 3)
+[ 963400.863] {mesa egl display queue} wl_registry#2.global(14, "zwp_tablet_manager_v2", 2)
+[ 963400.868] {mesa egl display queue} wl_registry#2.global(15, "wp_pointer_warp_v1", 1)
+[ 963400.873] {mesa egl display queue} wl_registry#2.global(16, "wl_seat", 10)
+[ 963400.878] {mesa egl display queue} wl_registry#2.global(17, "zwp_relative_pointer_manager_v1", 1)
+[ 963400.884] {mesa egl display queue} wl_registry#2.global(18, "zwp_pointer_constraints_v1", 1)
+[ 963400.893] {mesa egl display queue} wl_registry#2.global(19, "zxdg_exporter_v2", 1)
+[ 963400.902] {mesa egl display queue} wl_registry#2.global(20, "zxdg_importer_v2", 1)
+[ 963400.912] {mesa egl display queue} wl_registry#2.global(21, "zxdg_exporter_v1", 1)
+[ 963400.921] {mesa egl display queue} wl_registry#2.global(22, "zxdg_importer_v1", 1)
+[ 963400.930] {mesa egl display queue} wl_registry#2.global(23, "zwp_linux_dmabuf_v1", 5)
+[ 963400.942] {mesa egl display queue}  -> wl_registry#2.bind(23, "zwp_linux_dmabuf_v1", 4, new id [unknown]#4)
+[ 963400.953] {mesa egl display queue} wl_registry#2.global(24, "wp_single_pixel_buffer_manager_v1", 1)
+[ 963400.964] {mesa egl display queue} wl_registry#2.global(25, "zwp_keyboard_shortcuts_inhibit_manager_v1", 1)
+[ 963400.974] {mesa egl display queue} wl_registry#2.global(26, "zwp_text_input_manager_v3", 1)
+[ 963400.983] {mesa egl display queue} wl_registry#2.global(27, "wp_presentation", 2)
+[ 963400.993] {mesa egl display queue}  -> wl_registry#2.bind(27, "wp_presentation", 1, new id [unknown]#5)
+[ 963401.004] {mesa egl display queue} wl_registry#2.global(28, "xdg_activation_v1", 1)
+[ 963401.014] {mesa egl display queue} wl_registry#2.global(29, "zwp_idle_inhibit_manager_v1", 1)
+[ 963401.024] {mesa egl display queue} wl_registry#2.global(30, "wp_linux_drm_syncobj_manager_v1", 1)
+[ 963401.033] {mesa egl display queue} wl_registry#2.global(31, "xdg_wm_dialog_v1", 1)
+[ 963401.039] {mesa egl display queue} wl_registry#2.global(32, "wp_color_manager_v1", 1)
+[ 963401.044] {mesa egl display queue} wl_registry#2.global(33, "xdg_system_bell_v1", 1)
+[ 963401.049] {mesa egl display queue} wl_registry#2.global(34, "xdg_toplevel_tag_manager_v1", 1)
+[ 963401.061] {mesa egl display queue} wl_registry#2.global(35, "wp_drm_lease_device_v1", 1)
+[ 963401.071] {mesa egl display queue} wl_registry#2.global(36, "wp_commit_timing_manager_v1", 1)
+[ 963401.076] {mesa egl display queue} wl_registry#2.global(37, "wp_fifo_manager_v1", 1)
+[ 963401.081] {mesa egl display queue} wl_registry#2.global(38, "wp_cursor_shape_manager_v1", 2)
+[ 963401.086] {mesa egl display queue} wl_registry#2.global(39, "wp_color_representation_manager_v1", 1)
+[ 963401.094] {mesa egl display queue} wl_registry#2.global(40, "wl_fixes", 1)
+[ 963401.099] {mesa egl display queue} wl_callback#3.done(36338)
+[ 963401.107] {mesa egl display queue}  -> zwp_linux_dmabuf_v1#4.get_default_feedback(new id zwp_linux_dmabuf_feedback_v1#3)
+[ 963401.112] {mesa egl display queue}  -> wl_display#1.sync(new id wl_callback#6)
+[ 963401.266] {Display Queue} wl_display#1.delete_id(6)
+[ 963401.283] {mesa egl display queue} wp_presentation#5.clock_id(1)
+[ 963401.294] {mesa egl display queue} zwp_linux_dmabuf_feedback_v1#3.format_table(fd 4, 2592)
+[ 963401.325] {mesa egl display queue} zwp_linux_dmabuf_feedback_v1#3.main_device(array[8])
+[ 963401.788] {mesa egl display queue} zwp_linux_dmabuf_feedback_v1#3.tranche_target_device(array[8])
+[ 963401.803] {mesa egl display queue} zwp_linux_dmabuf_feedback_v1#3.tranche_flags(0)
+[ 963401.810] {mesa egl display queue} zwp_linux_dmabuf_feedback_v1#3.tranche_formats(array[324])
+[ 963401.824] {mesa egl display queue} zwp_linux_dmabuf_feedback_v1#3.tranche_done()
+[ 963401.830] {mesa egl display queue} zwp_linux_dmabuf_feedback_v1#3.done()
+[ 963401.836] {mesa egl display queue} wl_callback#6.done(36338)
+[ 963401.843] {mesa egl display queue}  -> zwp_linux_dmabuf_feedback_v1#3.destroy()
+[ 963411.903] {mesa egl display queue}  -> wp_presentation#5.destroy()
+[ 963411.930] {mesa egl display queue}  -> zwp_linux_dmabuf_v1#4.destroy()
+Successfully connected to Wayland display.
+Attempting eglInitialize...
+EGL initialized successfully: version 1.5
++ set +x
+Restoring environment
