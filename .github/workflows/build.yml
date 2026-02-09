@@ -1,0 +1,40 @@
+name: Test
+
+on:
+  workflow_dispatch: {}
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  run-examples:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [22, 24]
+    runs-on: ubuntu-latest
+    container:
+      image: fedora:43
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install System build tools
+        run: dnf install gcc cmake
+
+      - name: Set up Conan
+        uses: conan-io/setup-conan@v1
+
+      - name: Conan install dependencies
+        run: conan install . --build=missing
+      
+      - name: CMake setup
+        run: cmake --preset conan-release -DCMAKE_VERBOSE_MAKEFILE=ON
+      
+      - name: CMake build
+        run: cmake --build --preset conan-release
+      
+      - name: Run example
+        run: source build/Release/generators/conanrun.sh && build/Release/wayland_egl_example
+
+      
